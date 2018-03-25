@@ -1,4 +1,4 @@
-package Atrapados;
+package atrapados;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,6 +14,7 @@ public class Atrapados extends Canvas implements Runnable{
     private static final String NOMBRE = "ATRAPADOS";
 
     private int aps = 0;
+    private int fps = 0;
 
     private static Thread hilo;
 
@@ -57,7 +58,7 @@ public class Atrapados extends Canvas implements Runnable{
     }
 
     private void mostrar() {
-
+        fps ++;
     }
 
     @Override
@@ -88,9 +89,9 @@ public class Atrapados extends Canvas implements Runnable{
             mostrar();
 
             if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
-                ventana.setTitle(NOMBRE + " (APS: " + aps);
+                ventana.setTitle(NOMBRE + " (APS: " + aps + fps);
                 aps = 0;
-
+                fps = 0;
                 referenciaContador = System.nanoTime();
             }
         }
